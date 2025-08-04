@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engat Groups - We Don't Create Companies, We Build Gravity!</title>
+    <meta name="description" content="Engat Groups - Building tomorrow's empire through visionary leadership, strategic execution, and gravitational business solutions.">
+    <link rel="icon" type="image/png" href="assets/fav.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Powerful gradient backgrounds */
+        .hero-bg {
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #000000 100%);
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Bold typography */
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #00ffff 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+        }
+        
+        .power-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff0080 0%, #ff8c00 50%, #00ff80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: powerPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes powerPulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(1.2); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+        }
+        
+        .nav-link {
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-link:hover::before {
+            left: 100%;
+        }
+        
+        .nav-link:hover {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: #00ffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        /* Powerful buttons */
+        .power-btn {
+            background: linear-gradient(135deg, #ff0080, #ff8c00);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .power-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .power-btn:hover::before {
+            left: 100%;
+        }
+        
+        .power-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: #00ffff;
+            font-weight: 700;
+            padding: 16px 32px;
+            border: 2px solid #00ffff;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .secondary-btn:hover {
+            background: #00ffff;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+        }
+        
+        /* Cards with power */
+        .power-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .power-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #00ff80, #00ffff);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .power-card:hover::before {
+            opacity: 1;
+        }
+        
+        .power-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+        
+        /* Stats with impact */
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ffff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: statGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes statGlow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.3); }
+        }
+        
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Logo */
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ffff, #ff0080);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Section dividers */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, #ff0080, #00ffff, transparent);
+            margin: 80px 0;
+            animation: dividerPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes dividerPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .desktop-menu {
+                display: none;
+            }
+            
+            .power-card {
+                padding: 24px;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 4rem);
+            }
+            
+            .power-text {
+                font-size: clamp(1.2rem, 6vw, 2rem);
+            }
+        }
+        
+        /* Team member styling */
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #00ffff;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        .avatar-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ffff, #ff0080);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* Service icons */
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Contact section */
+        .contact-bg {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 128, 0.1) 100%);
+            border-radius: 20px;
+            padding: 60px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-bg {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+    <img src="logo.png" alt="Engat Groups Logo" class="w-10 h-10 object-contain rounded-full shadow-md" />
+    <span class="font-bold text-2xl text-white">ENGAT GROUPS</span>
+</div>
+
+                
+                <!-- Desktop Menu -->
+                <div class="desktop-menu flex space-x-2">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#home" class="nav-link block px-6 py-4" onclick="closeMobileMenu()">🏠 Home</a>
+                <a href="#services" class="nav-link block px-6 py-4" onclick="closeMobileMenu()">🚀 Services</a>
+                <a href="#about" class="nav-link block px-6 py-4" onclick="closeMobileMenu()">👥 About</a>
+                <a href="#contact" class="nav-link block px-6 py-4" onclick="closeMobileMenu()">📞 Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="max-w-7xl mx-auto px-4 text-center z-10">
+            <div class="fade-up">
+                <h1 class="hero-title mb-8">
+                    WE DON'T CREATE<br>
+                    COMPANIES
+                </h1>
+                <div class="power-text mb-12">
+                    WE BUILD GRAVITY!
+                </div>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Welcome to <strong>Engat Groups</strong> - where visionary leadership meets unstoppable execution. 
+                    We're not just building businesses, we're creating gravitational forces that attract success, 
+                    innovation, and empire-level growth across multiple industries.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="#services" class="power-btn">🚀 EXPLORE POWER</a>
+                    <a href="#about" class="secondary-btn">⚡ MEET THE FORCE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 px-4 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-up">
+                <div class="text-center">
+                    <div class="stat-number">7+</div>
+                    <div class="text-gray-400 font-semibold text-lg">YEARS OF DOMINANCE</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">3</div>
+                    <div class="text-gray-400 font-semibold text-lg">POWER VENTURES</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">∞</div>
+                    <div class="text-gray-400 font-semibold text-lg">POSSIBILITIES</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">100%</div>
+                    <div class="text-gray-400 font-semibold text-lg">EXECUTION RATE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6">
+                    OUR <span class="gradient-text">GRAVITATIONAL</span> FORCE
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Three powerful verticals that create unstoppable momentum in the business universe. 
+                    Each venture designed to dominate its sector and pull others into our orbit of success.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="power-card slide-in-left">
+                    <div class="service-icon bg-gradient-to-br from-cyan-500 to-blue-600 floating">
+                        💻
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">TECH DOMINATION</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Cutting-edge technology solutions that don't just solve problems - they obliterate them. 
+                        From revolutionary web platforms to mobile applications that redefine user experience.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-semibold">Web Development</span>
+                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold">Mobile Apps</span>
+                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold">Cloud Solutions</span>
+                    </div>
+                    <a href="#contact" class="power-btn text-sm">UNLEASH POWER</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="power-card fade-up">
+                    <div class="service-icon bg-gradient-to-br from-pink-500 to-rose-600 floating" style="animation-delay: 1s;">
+                        🎨
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">DESIGN SUPREMACY</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Visual storytelling that commands attention and converts audiences into believers. 
+                        Brand identities so powerful they become gravitational forces in their own right.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-4 py-2 bg-pink-500/20 text-pink-400 rounded-full text-sm font-semibold">Brand Identity</span>
+                        <span class="px-4 py-2 bg-rose-500/20 text-rose-400 rounded-full text-sm font-semibold">UI/UX Design</span>
+                        <span class="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-full text-sm font-semibold">Visual Strategy</span>
+                    </div>
+                    <a href="#contact" class="power-btn text-sm">COMMAND ATTENTION</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="power-card slide-in-right">
+                    <div class="service-icon bg-gradient-to-br from-green-500 to-emerald-600 floating" style="animation-delay: 2s;">
+                        📈
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">GROWTH EMPIRE</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Strategic consulting that transforms ambitious startups into industry titans. 
+                        We don't just grow businesses - we build empires that reshape entire markets.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">Strategic Planning</span>
+                        <span class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold">Market Domination</span>
+                        <span class="px-4 py-2 bg-teal-500/20 text-teal-400 rounded-full text-sm font-semibold">Empire Building</span>
+                    </div>
+                    <a href="#contact" class="power-btn text-sm">BUILD EMPIRE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6">
+                    THE <span class="gradient-text">GRAVITATIONAL</span> FORCE
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Meet the visionary architect behind tomorrow's business empire. 
+                    This is the story of unstoppable ambition, strategic brilliance, and gravitational leadership.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Founder Profile -->
+                <div class="slide-in-left">
+                    <div class="power-card text-center">
+                        <img src="assets/narender-kumar.jpg" alt="Narender Kumar - The Gravitational Force" class="team-avatar mx-auto mb-8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="avatar-placeholder mx-auto mb-8" style="display: none;">👨‍💼</div>
+                        <h3 class="text-3xl font-black text-white mb-4">NARENDER KUMAR</h3>
+                        <div class="text-xl font-bold text-cyan-400 mb-6">FOUNDER & GRAVITATIONAL ARCHITECT</div>
+                        <div class="text-2xl font-bold text-pink-400 mb-8 italic">
+                            "We Don't Create Ecosystems — We Build Gravity!"
+                        </div>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            The unstoppable force behind Engat Groups. With 7+ years of battlefield experience 
+                            in technology, strategy, and empire building, Narender doesn't just lead - he creates 
+                            gravitational pull that attracts success, talent, and revolutionary opportunities.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Company Power -->
+                <div class="slide-in-right">
+                    <h3 class="text-4xl font-black text-white mb-8">EMPIRE FOUNDATION</h3>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        <strong>Engat Groups</strong> isn't just another company - it's a <span class="text-cyan-400 font-bold">gravitational force</span> 
+                        reshaping how businesses are conceived, constructed, and conquered. We're the architects of tomorrow's empire.
+                    </p>
+                    
+                    <!-- Power Stats -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-2xl">🎯</div>
+                            <div>
+                                <div class="text-xl font-bold text-white">STRATEGIC DOMINANCE</div>
+                                <div class="text-gray-400">7+ Years of Market Conquest</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-2xl">⚡</div>
+                            <div>
+                                <div class="text-xl font-bold text-white">EXECUTION VELOCITY</div>
+                                <div class="text-gray-400">From Vision to Empire in Record Time</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-2xl">🌍</div>
+                            <div>
+                                <div class="text-xl font-bold text-white">GLOBAL GRAVITY</div>
+                                <div class="text-gray-400">Building Worldwide Business Attraction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Core Values -->
+            <div class="mt-20 fade-up">
+                <h3 class="text-4xl font-black text-white text-center mb-16">GRAVITATIONAL PRINCIPLES</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="power-card text-center">
+                        <div class="text-6xl mb-6">🎯</div>
+                        <h4 class="text-2xl font-bold text-cyan-400 mb-4">CLARITY</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Crystal-clear vision that cuts through market noise and identifies 
+                            the exact trajectory to empire-level success.
+                        </p>
+                    </div>
+                    
+                    <div class="power-card text-center">
+                        <div class="text-6xl mb-6">⚡</div>
+                        <h4 class="text-2xl font-bold text-pink-400 mb-4">MOMENTUM</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Unstoppable forward motion that transforms ambitious ideas 
+                            into market-dominating realities at lightning speed.
+                        </p>
+                    </div>
+                    
+                    <div class="power-card text-center">
+                        <div class="text-6xl mb-6">🚀</div>
+                        <h4 class="text-2xl font-bold text-green-400 mb-4">EXECUTION</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Bold, decisive action that turns strategic visions 
+                            into gravitational business forces that reshape industries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Power Mantras -->
+            <div class="mt-20 fade-up">
+                <h3 class="text-4xl font-black text-white text-center mb-16">EMPIRE MANTRAS</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="power-card text-center bg-gradient-to-br from-cyan-500/10 to-blue-600/10">
+                        <p class="text-xl font-bold text-cyan-400 italic">
+                            "Bringing ideas to execution, at scale."
+                        </p>
+                    </div>
+                    <div class="power-card text-center bg-gradient-to-br from-pink-500/10 to-rose-600/10">
+                        <p class="text-xl font-bold text-pink-400 italic">
+                            "Vision, strategy, and execution — aligned."
+                        </p>
+                    </div>
+                    <div class="power-card text-center bg-gradient-to-br from-green-500/10 to-emerald-600/10">
+                        <p class="text-xl font-bold text-green-400 italic">
+                            "From ambition to empire."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="contact-bg fade-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-black text-white mb-6">
+                        JOIN THE <span class="gradient-text">GRAVITATIONAL</span> FORCE
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                        Ready to be pulled into the orbit of success? Whether you're seeking empire-level partnerships, 
+                        revolutionary solutions, or want to become part of our gravitational ecosystem - the force awaits.
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-3xl font-black text-white mb-8">GRAVITATIONAL CONTACT</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-2xl">📧</div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">EMPIRE COMMAND</div>
+                                    <a href="mailto:engatgroups@gmail.com" class="text-cyan-400 hover:text-cyan-300 text-lg font-semibold">
+                                        engatgroups@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-2xl">🌍</div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">GLOBAL REACH</div>
+                                    <div class="text-gray-400 text-lg">Building Gravity Worldwide</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-2xl">⚡</div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">RESPONSE VELOCITY</div>
+                                    <div class="text-gray-400 text-lg">Empire-Speed Response Within 24 Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Power -->
+                        <div class="mt-12">
+                            <h4 class="text-2xl font-bold text-white mb-6">FOLLOW THE FORCE</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/engatgroups" target="_blank" class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white text-xl hover:scale-110 transition-transform">📷</a>
+                                <a href="https://www.twitter.com/engatgroups" target="_blank" class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xl hover:scale-110 transition-transform">🐦</a>
+                                <a href="https://www.youtube.com/@engatgroups" target="_blank" class="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center text-white text-xl hover:scale-110 transition-transform">📺</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Power Services -->
+                    <div>
+                        <h3 class="text-3xl font-black text-white mb-8">GRAVITATIONAL SERVICES</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-cyan-500/20">
+                                <span class="text-cyan-400 text-xl">⚡</span>
+                                <span class="text-white font-semibold">Technology Domination & Development</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-pink-500/20">
+                                <span class="text-pink-400 text-xl">🎨</span>
+                                <span class="text-white font-semibold">Design Supremacy & Brand Empire</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-green-500/20">
+                                <span class="text-green-400 text-xl">📈</span>
+                                <span class="text-white font-semibold">Strategic Growth & Market Conquest</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-purple-500/20">
+                                <span class="text-purple-400 text-xl">🤝</span>
+                                <span class="text-white font-semibold">Empire-Level Partnerships</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-yellow-500/20">
+                                <span class="text-yellow-400 text-xl">🎓</span>
+                                <span class="text-white font-semibold">Gravitational Internship Programs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <a href="mailto:engatgroups@gmail.com" class="power-btn">
+                                🚀 INITIATE CONTACT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-black border-t border-cyan-500/20">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center space-x-4">
+    <img src="logo.png" alt="Engat Groups Logo" class="w-10 h-10 object-contain rounded-full shadow-md" />
+    <span class="font-bold text-2xl text-white">ENGAT GROUPS</span>
+</div>
+
+            <p class="text-gray-400 mb-4">
+                © 2024 Engat Groups. All rights reserved. Building Tomorrow's Empire.
+            </p>
+            <p class="text-cyan-400 font-bold text-lg">
+                "We Don't Create Companies, We Build Gravity!"
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            mobileMenu.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            mobileMenu.classList.remove('active');
+            menuBtn.classList.remove('active');
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animation elements
+        document.querySelectorAll('.fade-up, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Add some dynamic effects
+        document.addEventListener('mousemove', (e) => {
+            const cursor = e.clientX / window.innerWidth;
+            const cursorY = e.clientY / window.innerHeight;
+            
+            // Subtle parallax effect on hero
+            const hero = document.querySelector('.hero-bg');
+            if (hero) {
+                const moveX = (cursor - 0.5) * 20;
+                const moveY = (cursorY - 0.5) * 20;
+                hero.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'969b5d8974b83f85',t:'MTc1NDI4MjMwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
